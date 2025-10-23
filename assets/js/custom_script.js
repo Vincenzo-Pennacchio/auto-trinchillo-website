@@ -36,8 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ===== STICKY NAVBAR ON SCROLL =====
-    let lastScrollTop = 0;
-    
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
@@ -48,16 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
         
-        // Hide/show navbar on scroll (optional)
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
-            header.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        // Ensure navbar is always visible
+        header.style.transform = 'translateY(0)';
     });
     
     // ===== SMOOTH SCROLLING FOR ANCHOR LINKS =====
