@@ -440,6 +440,196 @@ body {
     box-shadow: 0 8px 25px rgba(40, 125, 255, 0.3);
 }
 
+/* ===== BANNER SECTION ===== */
+.banner-section {
+    padding: var(--spacing-xxl) 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, var(--white) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23287dff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23113b80" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.banner-container {
+    position: relative;
+    z-index: 2;
+}
+
+.banner-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+    min-height: 400px;
+    position: relative;
+}
+
+.banner-text {
+    padding: var(--spacing-lg);
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.banner-title {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: var(--dark-blue);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+}
+
+.banner-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    border-radius: 2px;
+}
+
+.banner-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-gray);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
+}
+
+.banner-features {
+    margin-bottom: var(--spacing-lg);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-base);
+    color: var(--black);
+}
+
+.feature-item i {
+    color: var(--primary-blue);
+    font-size: 18px;
+}
+
+.banner-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: var(--white);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    box-shadow: 0 8px 25px rgba(40, 125, 255, 0.3);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.banner-btn:hover::before {
+    left: 100%;
+}
+
+.banner-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(40, 125, 255, 0.4);
+}
+
+.banner-image {
+    position: relative;
+    height: 400px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    animation: slideInRight 0.8s ease-out;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+.banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: var(--transition);
+}
+
+.banner-image:hover img {
+    transform: scale(1.05);
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(40, 125, 255, 0.1) 0%, rgba(17, 59, 128, 0.1) 100%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.banner-image:hover .banner-overlay {
+    opacity: 1;
+}
+
+/* Banner floating elements */
+.banner-content::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+}
+
+.banner-content::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
 /* ===== RECENSIONI SECTION ===== */
 .recensioni {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -652,6 +842,25 @@ body {
     .recensioni-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
+    }
+    
+    .banner-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .banner-image {
+        height: 300px;
+        order: -1;
+    }
+    
+    .banner-text {
+        padding: var(--spacing-md);
+    }
+    
+    .banner-title {
+        font-size: var(--font-size-xl);
     }
     
     .footer-content {

@@ -129,13 +129,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ===== SCROLL ANIMATIONS =====
-    const animateOnScroll = document.querySelectorAll('.servizio-card, .recensione-card, .section-header');
+    const animateOnScroll = document.querySelectorAll('.servizio-card, .recensione-card, .section-header, .banner-content');
     
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+                
+                // Special animation for banner content
+                if (entry.target.classList.contains('banner-content')) {
+                    const bannerText = entry.target.querySelector('.banner-text');
+                    const bannerImage = entry.target.querySelector('.banner-image');
+                    
+                    setTimeout(() => {
+                        bannerText.style.opacity = '1';
+                        bannerText.style.transform = 'translateX(0)';
+                    }, 200);
+                    
+                    setTimeout(() => {
+                        bannerImage.style.opacity = '1';
+                        bannerImage.style.transform = 'translateX(0)';
+                    }, 400);
+                }
             }
         });
     }, {
