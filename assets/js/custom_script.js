@@ -128,8 +128,97 @@ document.addEventListener('DOMContentLoaded', function() {
         imageObserver.observe(img);
     });
     
+    // ===== GAMMA BANNER ANIMATIONS =====
+    const gammaBanner = document.querySelector('.gamma-banner');
+    const gammaImage = document.querySelector('.gamma-image-wrapper');
+    const gammaText = document.querySelector('.gamma-text');
+    const gammaFeatures = document.querySelectorAll('.gamma-feature');
+    const gammaButtons = document.querySelectorAll('.gamma-btn');
+    
+    // Parallax effect for gamma banner
+    if (gammaBanner) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const bannerRect = gammaBanner.getBoundingClientRect();
+            const bannerTop = bannerRect.top + scrolled;
+            const bannerHeight = bannerRect.height;
+            
+            // Only apply parallax when banner is in viewport
+            if (scrolled + window.innerHeight > bannerTop && scrolled < bannerTop + bannerHeight) {
+                const speed = 0.5;
+                const yPos = -(scrolled - bannerTop) * speed;
+                gammaBanner.style.transform = `translateY(${yPos}px)`;
+            }
+        });
+    }
+    
+    // Staggered animation for gamma features
+    const gammaObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('gamma-text')) {
+                    // Animate gamma features with stagger
+                    gammaFeatures.forEach((feature, index) => {
+                        setTimeout(() => {
+                            feature.style.opacity = '1';
+                            feature.style.transform = 'translateX(0)';
+                        }, index * 200);
+                    });
+                    
+                    // Animate buttons with delay
+                    setTimeout(() => {
+                        gammaButtons.forEach((button, index) => {
+                            setTimeout(() => {
+                                button.style.opacity = '1';
+                                button.style.transform = 'translateY(0)';
+                            }, index * 100);
+                        });
+                    }, gammaFeatures.length * 200 + 300);
+                }
+                
+                // 3D hover effect for gamma image
+                if (entry.target.classList.contains('gamma-image-wrapper')) {
+                    entry.target.addEventListener('mousemove', function(e) {
+                        const rect = this.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const rotateX = (y - centerY) / 10;
+                        const rotateY = (centerX - x) / 10;
+                        
+                        this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                    });
+                    
+                    entry.target.addEventListener('mouseleave', function() {
+                        this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                    });
+                }
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+    
+    // Initialize gamma features as hidden
+    gammaFeatures.forEach(feature => {
+        feature.style.opacity = '0';
+        feature.style.transform = 'translateX(-20px)';
+        feature.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    gammaButtons.forEach(button => {
+        button.style.opacity = '0';
+        button.style.transform = 'translateY(20px)';
+        button.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // Observe gamma elements
+    if (gammaText) gammaObserver.observe(gammaText);
+    if (gammaImage) gammaObserver.observe(gammaImage);
+    
     // ===== SCROLL ANIMATIONS =====
-    const animateOnScroll = document.querySelectorAll('.servizio-card, .recensione-card, .section-header, .banner-content');
+    const animateOnScroll = document.querySelectorAll('.servizio-card, .recensione-card, .section-header, .banner-content, .gamma-content');
     
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -166,8 +255,102 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollObserver.observe(el);
     });
     
+    // ===== GAMMA BANNER ADVANCED EFFECTS =====
+    const gammaTitle = document.querySelector('.gamma-title');
+    
+    // Typing effect for gamma title
+    if (gammaTitle) {
+        const originalText = gammaTitle.textContent;
+        let isTypingStarted = false;
+        
+        const gammaTypingObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isTypingStarted) {
+                    isTypingStarted = true;
+                    typeWriter(gammaTitle, originalText, 100);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        gammaTypingObserver.observe(gammaTitle);
+    }
+    
+    function typeWriter(element, text, speed) {
+        element.textContent = '';
+        let i = 0;
+        
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+        
+        type();
+    }
+    
+    // Enhanced particle effect for gamma banner
+    function createGammaParticles() {
+        const particleContainer = document.createElement('div');
+        particleContainer.className = 'gamma-particles';
+        particleContainer.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        `;
+        
+        if (gammaBanner) {
+            gammaBanner.appendChild(particleContainer);
+            
+            for (let i = 0; i < 20; i++) {
+                createParticle(particleContainer);
+            }
+        }
+    }
+    
+    function createParticle(container) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particleFloat ${Math.random() * 10 + 5}s linear infinite;
+            left: ${Math.random() * 100}%;
+            top: 100%;
+            box-shadow: 0 0 10px rgba(40, 125, 255, 0.5);
+        `;
+        
+        container.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.parentNode.removeChild(particle);
+            }
+        }, 15000);
+    }
+    
+    // Initialize gamma particles
+    createGammaParticles();
+    
+    // Refresh particles periodically
+    setInterval(() => {
+        const particleContainer = document.querySelector('.gamma-particles');
+        if (particleContainer && particleContainer.children.length < 15) {
+            createParticle(particleContainer);
+        }
+    }, 1000);
+    
     // ===== BUTTON CLICK EFFECTS =====
-    const buttons = document.querySelectorAll('.cta-btn, .card-btn');
+    const buttons = document.querySelectorAll('.cta-btn, .card-btn, .gamma-btn');
     
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -400,6 +583,27 @@ const rippleStyles = `
     .scrolled {
         background: rgba(255, 255, 255, 0.98) !important;
         backdrop-filter: blur(20px) !important;
+    }
+    
+    @keyframes particleFloat {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    
+    .gamma-particles {
+        overflow: hidden;
     }
 `;
 
