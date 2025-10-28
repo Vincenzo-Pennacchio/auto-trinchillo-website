@@ -294,8 +294,103 @@ document.addEventListener('DOMContentLoaded', function() {
         logoObserver.observe(logoShowcase);
     }
 
+    // ===== CONCESSIONARIA SHOWCASE ANIMATIONS =====
+    const concessionariaShowcase = document.querySelector('.concessionaria-showcase');
+    const concessionariaImage = document.querySelector('.concessionaria-image');
+    const imageWrapper = document.querySelector('.image-wrapper');
+    const featureBoxes = document.querySelectorAll('.feature-box');
+    
+    if (concessionariaShowcase) {
+        // Image hover with 3D effect
+        if (imageWrapper) {
+            imageWrapper.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+            });
+            
+            imageWrapper.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+            });
+            
+            // Click effect for image
+            imageWrapper.addEventListener('click', function() {
+                // Create pulse effect
+                const pulse = document.createElement('div');
+                pulse.style.cssText = `
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 0;
+                    height: 0;
+                    background: rgba(40, 125, 255, 0.3);
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%);
+                    animation: pulseExpand 0.6s ease-out;
+                    pointer-events: none;
+                    z-index: 10;
+                `;
+                
+                this.appendChild(pulse);
+                
+                setTimeout(() => {
+                    pulse.remove();
+                }, 600);
+            });
+        }
+        
+        // Staggered animation for feature boxes
+        const concessionariaObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    featureBoxes.forEach((box, index) => {
+                        setTimeout(() => {
+                            box.style.opacity = '1';
+                            box.style.transform = 'translateX(0)';
+                        }, index * 150);
+                    });
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        
+        // Initialize feature boxes as hidden
+        featureBoxes.forEach(box => {
+            box.style.opacity = '0';
+            box.style.transform = 'translateX(30px)';
+            box.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        concessionariaObserver.observe(concessionariaShowcase);
+        
+        // Parallax effect for floating circles
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const concessionariaRect = concessionariaShowcase.getBoundingClientRect();
+            const concessionariaTop = concessionariaRect.top + scrolled;
+            const concessionariaHeight = concessionariaRect.height;
+            
+            if (scrolled + window.innerHeight > concessionariaTop && scrolled < concessionariaTop + concessionariaHeight) {
+                const floatingCircles = document.querySelectorAll('.floating-circle');
+                floatingCircles.forEach((circle, index) => {
+                    const speed = 0.3 + (index * 0.1);
+                    const yPos = -(scrolled - concessionariaTop) * speed;
+                    circle.style.transform = `translateY(${yPos}px)`;
+                });
+            }
+        });
+    }
+
     // ===== SCROLL ANIMATIONS =====
-    const animateOnScroll = document.querySelectorAll('.servizio-card, .recensione-card, .section-header, .banner-content, .gamma-content, .logo-showcase-content');
+    const animateOnScroll = document.querySelectorAll('.servizio-card, .recensione-card, .section-header, .banner-content, .gamma-content, .logo-showcase-content, .concessionaria-container');
     
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -660,6 +755,19 @@ const rippleStyles = `
     .scrolled {
         background: rgba(255, 255, 255, 0.98) !important;
         backdrop-filter: blur(20px) !important;
+    }
+    
+    @keyframes pulseExpand {
+        0% {
+            width: 0;
+            height: 0;
+            opacity: 1;
+        }
+        100% {
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+        }
     }
     
     @keyframes particleFloat {
