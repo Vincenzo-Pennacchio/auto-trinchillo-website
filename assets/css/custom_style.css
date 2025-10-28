@@ -300,6 +300,267 @@ body {
     }
 }
 
+/* ===== LOGO SHOWCASE SECTION ===== */
+.logo-showcase {
+    padding: var(--spacing-xxl) 0;
+    background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-showcase-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-container {
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: var(--spacing-lg);
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.1),
+        0 8px 25px rgba(40, 125, 255, 0.1);
+    transition: var(--transition);
+    animation: logoFloat 6s ease-in-out infinite;
+}
+
+.logo-wrapper:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.15),
+        0 15px 40px rgba(40, 125, 255, 0.2);
+}
+
+.showcase-logo {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 220px;
+    height: 220px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: var(--transition);
+    z-index: -1;
+    filter: blur(20px);
+}
+
+.logo-wrapper:hover .logo-glow {
+    opacity: 0.2;
+    width: 240px;
+    height: 240px;
+}
+
+.logo-text {
+    max-width: 600px;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.logo-title {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: var(--dark-blue);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+}
+
+.logo-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: lineGrow 1s ease-out 1s both;
+}
+
+.logo-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-gray);
+    font-weight: 300;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.decorative-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.dot-1 {
+    top: 20%;
+    left: 15%;
+    animation: floatDot 8s ease-in-out infinite;
+}
+
+.dot-2 {
+    top: 30%;
+    right: 20%;
+    animation: floatDot 10s ease-in-out infinite 2s;
+}
+
+.dot-3 {
+    bottom: 25%;
+    left: 20%;
+    animation: floatDot 12s ease-in-out infinite 4s;
+}
+
+.dot-4 {
+    bottom: 30%;
+    right: 15%;
+    animation: floatDot 9s ease-in-out infinite 1s;
+}
+
+/* Logo Section Animations */
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes lineGrow {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80px;
+    }
+}
+
+@keyframes floatDot {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.3;
+    }
+    25% {
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 0.4;
+    }
+    75% {
+        opacity: 0.6;
+    }
+}
+
+/* Background Pattern per Logo Section */
+.logo-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(40, 125, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(17, 59, 128, 0.05) 0%, transparent 50%);
+    z-index: 1;
+}
+
+/* Responsive Design per Logo Section */
+@media (max-width: 768px) {
+    .showcase-logo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .logo-wrapper {
+        padding: var(--spacing-md);
+    }
+    
+    .logo-glow {
+        width: 170px;
+        height: 170px;
+    }
+    
+    .logo-wrapper:hover .logo-glow {
+        width: 190px;
+        height: 190px;
+    }
+    
+    .logo-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    .logo-subtitle {
+        font-size: var(--font-size-base);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-showcase {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .showcase-logo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .logo-wrapper {
+        padding: var(--spacing-sm);
+    }
+    
+    .logo-glow {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .logo-wrapper:hover .logo-glow {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .logo-title {
+        font-size: var(--font-size-lg);
+    }
+    
+    .decorative-elements {
+        display: none;
+    }
+}
+
 /* ===== SECTIONS ===== */
 .servizi,
 .recensioni {

@@ -217,8 +217,85 @@ document.addEventListener('DOMContentLoaded', function() {
     if (gammaText) gammaObserver.observe(gammaText);
     if (gammaImage) gammaObserver.observe(gammaImage);
     
+    // ===== LOGO SHOWCASE ANIMATIONS =====
+    const logoShowcase = document.querySelector('.logo-showcase');
+    const showcaseLogo = document.querySelector('.showcase-logo');
+    const logoWrapper = document.querySelector('.logo-wrapper');
+    
+    if (logoShowcase && showcaseLogo) {
+        // Logo parallax effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const logoRect = logoShowcase.getBoundingClientRect();
+            const logoTop = logoRect.top + scrolled;
+            const logoHeight = logoRect.height;
+            
+            // Apply parallax only when logo section is in viewport
+            if (scrolled + window.innerHeight > logoTop && scrolled < logoTop + logoHeight) {
+                const speed = 0.3;
+                const yPos = -(scrolled - logoTop) * speed;
+                if (logoWrapper) {
+                    logoWrapper.style.transform = `translateY(${yPos}px)`;
+                }
+            }
+        });
+        
+        // Logo hover interaction enhancement
+        if (logoWrapper) {
+            logoWrapper.addEventListener('mouseenter', function() {
+                this.style.animation = 'none';
+                this.style.transform = 'scale(1.05) translateY(-10px)';
+            });
+            
+            logoWrapper.addEventListener('mouseleave', function() {
+                this.style.animation = 'logoFloat 6s ease-in-out infinite';
+                this.style.transform = 'scale(1) translateY(0px)';
+            });
+        }
+        
+        // Scroll-triggered logo animation
+        const logoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const logo = entry.target.querySelector('.showcase-logo');
+                    const text = entry.target.querySelector('.logo-text');
+                    
+                    if (logo) {
+                        logo.style.opacity = '1';
+                        logo.style.transform = 'scale(1) rotate(0deg)';
+                    }
+                    
+                    if (text) {
+                        setTimeout(() => {
+                            text.style.opacity = '1';
+                            text.style.transform = 'translateY(0)';
+                        }, 500);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        
+        // Initialize logo as hidden for animation
+        if (showcaseLogo) {
+            showcaseLogo.style.opacity = '0';
+            showcaseLogo.style.transform = 'scale(0.8) rotate(-10deg)';
+            showcaseLogo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        }
+        
+        const logoText = document.querySelector('.logo-text');
+        if (logoText) {
+            logoText.style.opacity = '0';
+            logoText.style.transform = 'translateY(30px)';
+            logoText.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        }
+        
+        logoObserver.observe(logoShowcase);
+    }
+
     // ===== SCROLL ANIMATIONS =====
-    const animateOnScroll = document.querySelectorAll('.servizio-card, .recensione-card, .section-header, .banner-content, .gamma-content');
+    const animateOnScroll = document.querySelectorAll('.servizio-card, .recensione-card, .section-header, .banner-content, .gamma-content, .logo-showcase-content');
     
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
