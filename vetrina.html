@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vetrina Auto Trinchillo - Auto usate selezionate e garantite. Trova il veicolo perfetto per le tue esigenze.">
+    <meta name="keywords" content="auto usate, vendita auto, auto garantite, veicoli usati, concessionaria">
+    <title>Vetrina Auto - Auto Trinchillo</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom_style.css">
+    <link rel="stylesheet" href="assets/css/vetrina_style.css">
+</head>
+
+<body>
+    <!-- Header & Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <img src="Logo-trinchillo-2.png" alt="Auto Trinchillo Logo" class="logo">
+                </div>
+                
+                <!-- Desktop Menu -->
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#servizi" class="nav-link">Servizi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#mappa" class="nav-link">Dove siamo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#recensioni" class="nav-link">Recensioni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="vetrina.html" class="nav-link active">Vetrina</a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile Hamburger -->
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section Vetrina -->
+    <section class="vetrina-hero">
+        <div class="vetrina-hero-bg">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <h1 class="hero-title">La Nostra Vetrina</h1>
+                    <p class="hero-subtitle">Auto usate selezionate e garantite<br>Trova il veicolo perfetto per le tue esigenze</p>
+                    <a href="index.html#home" class="back-home-btn">
+                        <i class="fas fa-home"></i>
+                        Torna alla Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtri Section -->
+    <section class="filtri-section">
+        <div class="container">
+            <div class="filtri-container">
+                <h3>Filtra per:</h3>
+                <div class="filtri-grid">
+                    <div class="filtro-item">
+                        <label for="marca">Marca</label>
+                        <select id="marca" class="filtro-select">
+                            <option value="">Tutte le marche</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="volkswagen">Volkswagen</option>
+                            <option value="bmw">BMW</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                            <option value="ford">Ford</option>
+                            <option value="opel">Opel</option>
+                        </select>
+                    </div>
+                    <div class="filtro-item">
+                        <label for="prezzo">Prezzo massimo</label>
+                        <select id="prezzo" class="filtro-select">
+                            <option value="">Qualsiasi prezzo</option>
+                            <option value="5000">Fino a €5.000</option>
+                            <option value="10000">Fino a €10.000</option>
+                            <option value="15000">Fino a €15.000</option>
+                            <option value="20000">Fino a €20.000</option>
+                            <option value="25000">Fino a €25.000</option>
+                            <option value="30000">Oltre €30.000</option>
+                        </select>
+                    </div>
+                    <div class="filtro-item">
+                        <label for="anno">Anno</label>
+                        <select id="anno" class="filtro-select">
+                            <option value="">Qualsiasi anno</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018 e precedenti</option>
+                        </select>
+                    </div>
+                    <button class="reset-filtri-btn">
+                        <i class="fas fa-undo"></i>
+                        Reset Filtri
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto in Vendita Section -->
+    <section class="auto-vendita-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Le Nostre Auto in Vendita</h2>
+                <p>Ogni veicolo è accuratamente selezionato e controllato per garantirti qualità e affidabilità</p>
+            </div>
+            
+            <div class="auto-grid" id="autoGrid">
+                <!-- Auto Card 1 -->
+                <div class="auto-card" data-marca="fiat" data-prezzo="12500" data-anno="2020">
+                    <div class="auto-image-container">
+                        <img src="assets/img/custom-img/img-custom-auto-trinchillo-2.png" alt="Fiat Panda" class="auto-image" loading="lazy">
+                        <div class="auto-badge">
+                            <span class="badge garantita">Garantita</span>
+                        </div>
+                        <div class="auto-overlay">
+                            <button class="view-details-btn" data-auto="1">
+                                <i class="fas fa-eye"></i>
+                                Vedi Dettagli
+                            </button>
+                        </div>
+                    </div>
+                    <div class="auto-info">
+                        <div class="auto-header">
+                            <h3 class="auto-title">Fiat Panda 1.2 Easy</h3>
+                            <span class="auto-price">€12.500</span>
+                        </div>
+                        <div class="auto-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2020</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>45.000 km</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Benzina</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cogs"></i>
+                                <span>Manuale</span>
+                            </div>
+                        </div>
+                        <div class="auto-description">
+                            <p>Fiat Panda in ottime condizioni, perfetta per la città. Climatizzatore, sistema multimediale, cerchi in lega.</p>
+                        </div>
+                        <div class="auto-actions">
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i>
+                                Contattaci
+                            </button>
+                            <button class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Card 2 -->
+                <div class="auto-card" data-marca="volkswagen" data-prezzo="18500" data-anno="2021">
+                    <div class="auto-image-container">
+                        <img src="assets/img/custom-img/img-custom-auto-trinchillo-3.png" alt="Volkswagen Golf" class="auto-image" loading="lazy">
+                        <div class="auto-badge">
+                            <span class="badge garantita">Garantita</span>
+                            <span class="badge offerta">Offerta</span>
+                        </div>
+                        <div class="auto-overlay">
+                            <button class="view-details-btn" data-auto="2">
+                                <i class="fas fa-eye"></i>
+                                Vedi Dettagli
+                            </button>
+                        </div>
+                    </div>
+                    <div class="auto-info">
+                        <div class="auto-header">
+                            <h3 class="auto-title">Volkswagen Golf 1.6 TDI</h3>
+                            <span class="auto-price">€18.500</span>
+                        </div>
+                        <div class="auto-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2021</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>32.000 km</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cogs"></i>
+                                <span>Manuale</span>
+                            </div>
+                        </div>
+                        <div class="auto-description">
+                            <p>Volkswagen Golf diesel, ottimi consumi e prestazioni. Full optional, navigatore, sensori parcheggio.</p>
+                        </div>
+                        <div class="auto-actions">
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i>
+                                Contattaci
+                            </button>
+                            <button class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Card 3 -->
+                <div class="auto-card" data-marca="bmw" data-prezzo="25000" data-anno="2022">
+                    <div class="auto-image-container">
+                        <img src="assets/img/custom-img/img-custom-auto-trinchillo-4.png" alt="BMW Serie 3" class="auto-image" loading="lazy">
+                        <div class="auto-badge">
+                            <span class="badge garantita">Garantita</span>
+                            <span class="badge premium">Premium</span>
+                        </div>
+                        <div class="auto-overlay">
+                            <button class="view-details-btn" data-auto="3">
+                                <i class="fas fa-eye"></i>
+                                Vedi Dettagli
+                            </button>
+                        </div>
+                    </div>
+                    <div class="auto-info">
+                        <div class="auto-header">
+                            <h3 class="auto-title">BMW Serie 3 320d</h3>
+                            <span class="auto-price">€25.000</span>
+                        </div>
+                        <div class="auto-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2022</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>28.000 km</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cogs"></i>
+                                <span>Automatico</span>
+                            </div>
+                        </div>
+                        <div class="auto-description">
+                            <p>BMW Serie 3 in condizioni eccellenti. Interni in pelle, sistema di infotainment BMW, assistenti di guida.</p>
+                        </div>
+                        <div class="auto-actions">
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i>
+                                Contattaci
+                            </button>
+                            <button class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Card 4 -->
+                <div class="auto-card" data-marca="mercedes" data-prezzo="22000" data-anno="2021">
+                    <div class="auto-image-container">
+                        <img src="assets/img/custom-img/img-custom-auto-trinchillo-5.png" alt="Mercedes Classe A" class="auto-image" loading="lazy">
+                        <div class="auto-badge">
+                            <span class="badge garantita">Garantita</span>
+                        </div>
+                        <div class="auto-overlay">
+                            <button class="view-details-btn" data-auto="4">
+                                <i class="fas fa-eye"></i>
+                                Vedi Dettagli
+                            </button>
+                        </div>
+                    </div>
+                    <div class="auto-info">
+                        <div class="auto-header">
+                            <h3 class="auto-title">Mercedes Classe A 180d</h3>
+                            <span class="auto-price">€22.000</span>
+                        </div>
+                        <div class="auto-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2021</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>35.000 km</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cogs"></i>
+                                <span>Automatico</span>
+                            </div>
+                        </div>
+                        <div class="auto-description">
+                            <p>Mercedes Classe A elegante e sportiva. Sistema MBUX, LED high performance, pacchetto AMG Line.</p>
+                        </div>
+                        <div class="auto-actions">
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i>
+                                Contattaci
+                            </button>
+                            <button class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Card 5 -->
+                <div class="auto-card" data-marca="audi" data-prezzo="19500" data-anno="2020">
+                    <div class="auto-image-container">
+                        <img src="assets/img/custom-img/assets-trinchillo-new.png" alt="Audi A3" class="auto-image" loading="lazy">
+                        <div class="auto-badge">
+                            <span class="badge garantita">Garantita</span>
+                        </div>
+                        <div class="auto-overlay">
+                            <button class="view-details-btn" data-auto="5">
+                                <i class="fas fa-eye"></i>
+                                Vedi Dettagli
+                            </button>
+                        </div>
+                    </div>
+                    <div class="auto-info">
+                        <div class="auto-header">
+                            <h3 class="auto-title">Audi A3 Sportback TDI</h3>
+                            <span class="auto-price">€19.500</span>
+                        </div>
+                        <div class="auto-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2020</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>40.000 km</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cogs"></i>
+                                <span>Manuale</span>
+                            </div>
+                        </div>
+                        <div class="auto-description">
+                            <p>Audi A3 Sportback versatile e tecnologica. Virtual Cockpit, Connect, sistema audio premium.</p>
+                        </div>
+                        <div class="auto-actions">
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i>
+                                Contattaci
+                            </button>
+                            <button class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Card 6 -->
+                <div class="auto-card" data-marca="ford" data-prezzo="14500" data-anno="2019">
+                    <div class="auto-image-container">
+                        <img src="assets/img/custom-img/assets-trinchillo-gamma.png" alt="Ford Focus" class="auto-image" loading="lazy">
+                        <div class="auto-badge">
+                            <span class="badge garantita">Garantita</span>
+                        </div>
+                        <div class="auto-overlay">
+                            <button class="view-details-btn" data-auto="6">
+                                <i class="fas fa-eye"></i>
+                                Vedi Dettagli
+                            </button>
+                        </div>
+                    </div>
+                    <div class="auto-info">
+                        <div class="auto-header">
+                            <h3 class="auto-title">Ford Focus 1.5 TDCi</h3>
+                            <span class="auto-price">€14.500</span>
+                        </div>
+                        <div class="auto-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2019</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>55.000 km</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cogs"></i>
+                                <span>Manuale</span>
+                            </div>
+                        </div>
+                        <div class="auto-description">
+                            <p>Ford Focus affidabile e spaziosa. Sistema SYNC 3, cruise control, sensori di parcheggio anteriori e posteriori.</p>
+                        </div>
+                        <div class="auto-actions">
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i>
+                                Contattaci
+                            </button>
+                            <button class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Non hai trovato quello che cerchi?</h2>
+                <p>Contattaci per ricevere informazioni su nuovi arrivi e auto su ordinazione</p>
+                <div class="cta-buttons">
+                    <a href="tel:+393486928732" class="cta-btn primary">
+                        <i class="fas fa-phone"></i>
+                        Chiamaci Ora
+                    </a>
+                    <a href="https://wa.me/393486928732" class="cta-btn secondary" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contatti" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo e descrizione -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="Logo-trinchillo-2.png" alt="Auto Trinchillo Footer Logo" loading="lazy">
+                    </div>
+                    <p>La tua auto in mani esperte. Qualità, professionalità e affidabilità da oltre 40 anni.</p>
+                </div>
+                
+                <!-- Link rapidi -->
+                <div class="footer-section">
+                    <h3>Link rapidi</h3>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#servizi">Servizi</a></li>
+                        <li><a href="index.html#mappa">Dove siamo</a></li>
+                        <li><a href="index.html#recensioni">Recensioni</a></li>
+                        <li><a href="vetrina.html">Vetrina</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contatti -->
+                <div class="footer-section">
+                    <h3>Contatti</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+39 348 692 8732</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>vincenzotrinchillo12@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Via del Cimitero n.19, Qualiano</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social -->
+                <div class="footer-section">
+                    <h3>Seguici</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/europacarrozzeriatrinchillo/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@europacarrozzeria?_t=ZN-90z3GyaVUDm&_r=1" target="_blank" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Auto Trinchillo. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/custom_script.js"></script>
+    <script src="assets/js/vetrina_script.js"></script>
+</body>
+</html>
