@@ -724,6 +724,100 @@ document.addEventListener('DOMContentLoaded', function() {
     // initGoogleReviews();
     */
     
+    // ===== MAPPA SECTION ANIMATIONS =====
+    const mappaSection = document.querySelector('.mappa-section');
+    const infoCards = document.querySelectorAll('.info-card');
+    const mappaFrame = document.querySelector('.mappa-frame');
+    
+    if (mappaSection) {
+        // Staggered animation for info cards
+        const mappaObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    infoCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateX(0)';
+                        }, index * 200);
+                    });
+                    
+                    // Animate mappa frame
+                    if (mappaFrame) {
+                        setTimeout(() => {
+                            mappaFrame.style.opacity = '1';
+                            mappaFrame.style.transform = 'translateY(0)';
+                        }, infoCards.length * 200 + 300);
+                    }
+                    
+                    mappaObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        // Initialize info cards as hidden
+        infoCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateX(-30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        // Initialize mappa frame as hidden
+        if (mappaFrame) {
+            mappaFrame.style.opacity = '0';
+            mappaFrame.style.transform = 'translateY(30px)';
+            mappaFrame.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        }
+        
+        mappaObserver.observe(mappaSection);
+        
+        // Enhanced hover effects for info cards
+        infoCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(10px) scale(1)';
+            });
+        });
+        
+        // Google Maps interaction
+        const googleMapIframe = document.querySelector('.google-map iframe');
+        if (googleMapIframe) {
+            googleMapIframe.addEventListener('load', function() {
+                console.log('Google Maps loaded successfully');
+            });
+            
+            // Add click tracking for directions button
+            const directionsBtn = document.querySelector('.directions-btn');
+            if (directionsBtn) {
+                directionsBtn.addEventListener('click', function(e) {
+                    console.log('Directions button clicked');
+                    // You can add analytics tracking here
+                });
+            }
+        }
+        
+        // Parallax effect for decorative elements
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const mappaRect = mappaSection.getBoundingClientRect();
+            const mappaTop = mappaRect.top + scrolled;
+            const mappaHeight = mappaRect.height;
+            
+            if (scrolled + window.innerHeight > mappaTop && scrolled < mappaTop + mappaHeight) {
+                const decorationElements = document.querySelectorAll('.decoration-element');
+                decorationElements.forEach((element, index) => {
+                    const speed = 0.3 + (index * 0.1);
+                    const yPos = -(scrolled - mappaTop) * speed;
+                    element.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.1}deg)`;
+                });
+            }
+        });
+    }
+    
     console.log('Auto Trinchillo website loaded successfully!');
 });
 
