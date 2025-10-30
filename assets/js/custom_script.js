@@ -818,6 +818,168 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // ===== CAROSELLO RECENSIONI =====
+    const recensioniCarousel = document.querySelector('.recensioni-carousel');
+    const carouselTrack = document.querySelector('.carousel-track');
+    const recensioniCards = document.querySelectorAll('.recensione-card');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    if (recensioniCarousel && carouselTrack && recensioniCards.length > 0) {
+        let currentSlide = 0;
+        const totalSlides = recensioniCards.length; // 6 recensioni individuali
+        const cardsPerSlide = 1; // Una recensione alla volta
+        let autoplayInterval;
+        let isTransitioning = false;
+        
+        // Calcola la larghezza di una carta più il gap
+        function getCardWidth() {
+            const cardStyle = window.getComputedStyle(recensioniCards[0]);
+            const cardWidth = recensioniCards[0].offsetWidth;
+            const marginRight = parseInt(cardStyle.marginRight) || 0;
+            return cardWidth + marginRight;
+        }
+        
+        // Aggiorna la posizione del carosello
+        function updateCarouselPosition(animated = true) {
+            if (isTransitioning) return;
+            
+            const cardWidth = getCardWidth();
+            const offset = currentSlide * cardWidth; // Una carta alla volta
+            
+            if (!animated) {
+                carouselTrack.classList.add('no-transition');
+            } else {
+                carouselTrack.classList.remove('no-transition');
+                isTransitioning = true;
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
+            }
+            
+            carouselTrack.style.transform = `translateX(-${offset}px)`;
+            
+            if (!animated) {
+                setTimeout(() => {
+                    carouselTrack.classList.remove('no-transition');
+                }, 50);
+            }
+        }
+        
+        // Funzioni per indicatori e bottoni rimosse poiché nascosti
+        
+        // Vai al slide successivo
+        function nextSlide() {
+            if (isTransitioning) return;
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarouselPosition();
+        }
+        
+        // Vai al slide precedente
+        function prevSlide() {
+            if (isTransitioning) return;
+            currentSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
+            updateCarouselPosition();
+        }
+        
+        // Vai a uno slide specifico
+        function goToSlide(slideIndex) {
+            if (isTransitioning || slideIndex === currentSlide) return;
+            currentSlide = slideIndex;
+            updateCarouselPosition();
+        }
+        
+        // Avvia l'autoplay
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                nextSlide();
+            }, 3000); // Cambia slide ogni 3 secondi (più veloce per singole recensioni)
+        }
+        
+        // Ferma l'autoplay
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+        
+        // Event listeners per i controlli rimossi (controlli nascosti)
+        
+        // Pausa autoplay al hover
+        recensioniCarousel.addEventListener('mouseenter', stopAutoplay);
+        recensioniCarousel.addEventListener('mouseleave', startAutoplay);
+        
+        // Touch/swipe support per dispositivi mobili
+        let startX = 0;
+        let endX = 0;
+        const minSwipeDistance = 50;
+        
+        recensioniCarousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        recensioniCarousel.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+        }, { passive: true });
+        
+        function handleSwipe() {
+            const swipeDistance = startX - endX;
+            
+            if (Math.abs(swipeDistance) > minSwipeDistance) {
+                stopAutoplay();
+                
+                if (swipeDistance > 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+                
+                startAutoplay();
+            }
+        }
+        
+        // Navigazione da tastiera rimossa per un'esperienza più pulita
+        
+        // Gestione del resize della finestra
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                updateCarouselPosition(false);
+            }, 250);
+        });
+        
+        // Inizializzazione
+        updateCarouselPosition(false);
+        startAutoplay();
+        
+        // Observer per visibilità (pausa autoplay quando non visibile)
+        const carouselObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startAutoplay();
+                } else {
+                    stopAutoplay();
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+        
+        carouselObserver.observe(recensioniCarousel);
+        
+        // Cleanup al cambio di pagina
+        window.addEventListener('beforeunload', () => {
+            stopAutoplay();
+            carouselObserver.disconnect();
+        });
+    }
+    
     console.log('Auto Trinchillo website loaded successfully!');
 });
 

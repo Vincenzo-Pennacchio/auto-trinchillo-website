@@ -2038,11 +2038,35 @@ body {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
+/* Carosello Recensioni */
+.recensioni-carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-container {
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: var(--spacing-lg);
+}
+
+.carousel-track.no-transition {
+    transition: none;
+}
+
 .recensioni-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex; /* Cambiato da grid a flex per layout lineare */
     gap: var(--spacing-lg);
     margin-top: var(--spacing-xl);
+    width: auto;
+    flex-shrink: 0;
 }
 
 .recensione-card {
@@ -2053,6 +2077,9 @@ body {
     transition: var(--transition);
     position: relative;
     border-left: 4px solid var(--primary-blue);
+    min-width: 350px;
+    flex: 0 0 350px; /* Larghezza fissa per una recensione alla volta */
+    margin-right: var(--spacing-lg);
 }
 
 .recensione-card:hover {
@@ -2097,6 +2124,138 @@ body {
     font-size: 30px;
     color: var(--primary-blue);
     font-weight: bold;
+}
+
+/* Controlli del Carosello */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: none; /* Nascosti */
+    justify-content: space-between;
+    padding: 0 var(--spacing-sm);
+    pointer-events: none;
+}
+
+.carousel-btn {
+    background: var(--white);
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(40, 125, 255, 0.2);
+    pointer-events: all;
+    font-size: 18px;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(40, 125, 255, 0.4);
+}
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+.carousel-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Indicatori del Carosello */
+.carousel-indicators {
+    display: none; /* Nascosti */
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-blue);
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.indicator.active {
+    background: var(--primary-blue);
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(40, 125, 255, 0.5);
+}
+
+.indicator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transition: left 0.5s ease;
+}
+
+.indicator:hover::before {
+    left: 100%;
+}
+
+/* Animazioni per l'autoplay */
+.carousel-track.auto-sliding {
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Effetti di hover per le recensioni nel carosello */
+.recensioni-carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* Responsive Design per il Carosello */
+@media (max-width: 768px) {
+    .recensioni-grid {
+        gap: var(--spacing-md);
+    }
+    
+    .recensione-card {
+        flex: 0 0 300px;
+        margin-right: var(--spacing-md);
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recensioni-carousel {
+        margin: 0 -var(--spacing-sm);
+    }
+    
+    .carousel-container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .recensione-card {
+        flex: 0 0 280px;
+        min-width: 280px;
+        padding: var(--spacing-md);
+        margin-right: var(--spacing-sm);
+    }
 }
 
 /* ===== FOOTER ===== */
