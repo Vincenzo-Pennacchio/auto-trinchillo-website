@@ -140,9 +140,9 @@
             
             <div class="auto-grid" id="autoGrid">
                 <!-- Auto Card 1 -->
-                <div class="auto-card" data-marca="fiat" data-prezzo="12500" data-anno="2020">
+                <div class="auto-card" data-marca="fiat" data-prezzo="12500" data-anno="2020" data-carousel-images="1,2,3,4,5,6,7,8,9,10">
                     <div class="auto-image-container">
-                        <img src="assets/img/custom-img/img-custom-auto-trinchillo-2.png" alt="Fiat Panda" class="auto-image" loading="lazy">
+                        <img src="assets/img/carousel-img/carousel-img-1.jpeg" alt="Fiat Panda" class="auto-image" loading="lazy">
                         <div class="auto-badge">
                             <span class="badge garantita">Garantita</span>
                         </div>
@@ -193,9 +193,9 @@
                 </div>
 
                 <!-- Auto Card 2 -->
-                <div class="auto-card" data-marca="volkswagen" data-prezzo="18500" data-anno="2021">
+                <div class="auto-card" data-marca="volkswagen" data-prezzo="18500" data-anno="2021" data-carousel-images="11,12,13,14,15,16">
                     <div class="auto-image-container">
-                        <img src="assets/img/custom-img/img-custom-auto-trinchillo-3.png" alt="Volkswagen Golf" class="auto-image" loading="lazy">
+                        <img src="assets/img/carousel-img/carousel-img-11.jpeg" alt="Volkswagen Golf" class="auto-image" loading="lazy">
                         <div class="auto-badge">
                             <span class="badge garantita">Garantita</span>
                             <span class="badge offerta">Offerta</span>
@@ -247,9 +247,9 @@
                 </div>
 
                 <!-- Auto Card 3 -->
-                <div class="auto-card" data-marca="bmw" data-prezzo="25000" data-anno="2022">
+                <div class="auto-card" data-marca="bmw" data-prezzo="25000" data-anno="2022" data-carousel-images="17">
                     <div class="auto-image-container">
-                        <img src="assets/img/custom-img/img-custom-auto-trinchillo-4.png" alt="BMW Serie 3" class="auto-image" loading="lazy">
+                        <img src="assets/img/carousel-img/carousel-img-17.jpeg" alt="BMW Serie 3" class="auto-image" loading="lazy">
                         <div class="auto-badge">
                             <span class="badge garantita">Garantita</span>
                             <span class="badge premium">Premium</span>
@@ -547,6 +547,56 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal Carousel -->
+    <div id="autoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-header-top">
+                    <h3 class="modal-title" id="modalTitle">Titolo Auto</h3>
+                    <div class="modal-header-actions">
+                        <a href="tel:+393486928732" class="modal-header-btn phone">
+                            <i class="fas fa-phone"></i>
+                            <span>Chiama</span>
+                        </a>
+                        <button class="modal-header-btn whatsapp" id="modalWhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </button>
+                        <button class="modal-close" id="modalClose">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-header-details" id="modalHeaderDetails">
+                    <!-- I dettagli verranno generati dinamicamente qui -->
+                </div>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-counter">
+                    <span id="currentSlide">1</span> / <span id="totalSlides">1</span>
+                </div>
+                
+                <div id="carouselSlides" class="carousel-slides">
+                    <!-- Le slide verranno generate dinamicamente -->
+                </div>
+                
+                <button class="carousel-nav carousel-prev" id="prevSlide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-nav carousel-next" id="nextSlide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Gli indicatori verranno generati dinamicamente -->
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="assets/js/custom_script.js"></script>
