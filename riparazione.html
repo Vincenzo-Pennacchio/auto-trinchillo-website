@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servizi di riparazione auto professionale - Europa Carrozzeria Trinchillo. Riparazioni meccaniche e di carrozzeria con tecnologie all'avanguardia.">
+    <meta name="keywords" content="riparazione auto, carrozzeria, meccanico, riparazione carrozzeria, trinchillo">
+    <title>Riparazione Auto - Auto Trinchillo</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom_style.css">
+    
+    <style>
+        /* Stili specifici per la pagina riparazione */
+        .riparazione-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            overflow: hidden;
+        }
+
+        .riparazione-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/img/carousel-img/carousel-img-21.jpeg') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .riparazione-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .riparazione-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .riparazione-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Sezioni di servizio */
+        .servizio-banner {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .servizio-banner:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .banner-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .banner-reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .banner-reverse .banner-content {
+            order: 2;
+        }
+
+        .banner-reverse .banner-image {
+            order: 1;
+        }
+
+        .banner-content h2 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .banner-features {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .banner-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #333;
+        }
+
+        .banner-features li i {
+            color: #2a5298;
+            width: 20px;
+        }
+
+        .banner-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .banner-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Sezione specializzazioni */
+        .specializzazioni {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .specializzazioni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .specializzazione-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .specializzazione-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .specializzazione-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .specializzazione-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .specializzazione-card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: white;
+        }
+
+        .cta-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(42, 82, 152, 0.3);
+        }
+
+        .cta-btn.secondary {
+            background: white;
+            color: #2a5298;
+            border: 2px solid #2a5298;
+        }
+
+        .cta-btn.secondary:hover {
+            background: #2a5298;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .riparazione-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .banner-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .banner-reverse .banner-content,
+            .banner-reverse .banner-image {
+                order: unset;
+            }
+
+            .banner-content h2 {
+                font-size: 2rem;
+            }
+
+            .specializzazioni-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <img src="Logo-trinchillo-2.png" alt="Auto Trinchillo Logo" class="logo">
+                </div>
+                
+                <!-- Desktop Menu -->
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#servizi" class="nav-link">Servizi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#mappa" class="nav-link">Dove siamo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#recensioni" class="nav-link">Recensioni</a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile Hamburger -->
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="riparazione-hero">
+        <div class="riparazione-hero-content">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Torna alla Home
+            </a>
+            <h1>Servizi di Riparazione</h1>
+            <p>Riparazioni professionali per ogni tipo di veicolo con tecnologie all'avanguardia e personale altamente qualificato</p>
+        </div>
+    </section>
+
+    <!-- Riparazione Carrozzeria Section -->
+    <section class="servizio-banner">
+        <div class="banner-container">
+            <div class="banner-content">
+                <h2>Riparazione Carrozzeria</h2>
+                <p>La nostra officina è specializzata in riparazioni di carrozzeria di ogni tipo e gravità. Utilizziamo tecniche moderne e materiali di alta qualità per ripristinare l'aspetto originale del tuo veicolo.</p>
+                <ul class="banner-features">
+                    <li><i class="fas fa-check-circle"></i>Riparazione ammaccature senza verniciatura</li>
+                    <li><i class="fas fa-check-circle"></i>Sostituzione pannelli danneggiati</li>
+                    <li><i class="fas fa-check-circle"></i>Raddrizzamento telaio con banco dima</li>
+                    <li><i class="fas fa-check-circle"></i>Riparazione danni da grandine</li>
+                    <li><i class="fas fa-check-circle"></i>Lavori assicurativi con garanzia</li>
+                </ul>
+            </div>
+            <div class="banner-image">
+                <img src="assets/img/carousel-img/carousel-img-21.jpeg" alt="Riparazione Carrozzeria Auto Trinchillo" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Riparazione Meccanica Section -->
+    <section class="servizio-banner">
+        <div class="banner-container banner-reverse">
+            <div class="banner-content">
+                <h2>Riparazione Meccanica</h2>
+                <p>Il nostro team di meccanici esperti si occupa di ogni aspetto della manutenzione e riparazione meccanica del tuo veicolo, dalle riparazioni più semplici agli interventi più complessi.</p>
+                <ul class="banner-features">
+                    <li><i class="fas fa-check-circle"></i>Diagnosi computerizzata avanzata</li>
+                    <li><i class="fas fa-check-circle"></i>Riparazione motore e cambio</li>
+                    <li><i class="fas fa-check-circle"></i>Sistemazione impianto frenante</li>
+                    <li><i class="fas fa-check-circle"></i>Manutenzione ordinaria e straordinaria</li>
+                    <li><i class="fas fa-check-circle"></i>Riparazione climatizzatore</li>
+                </ul>
+            </div>
+            <div class="banner-image">
+                <img src="assets/img/carousel-img/carousel-img-23.jpeg" alt="Riparazione Meccanica Auto Trinchillo" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializzazioni Section -->
+    <section class="specializzazioni">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 20px;">Le nostre specializzazioni</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem;">Competenza ed esperienza in ogni settore della riparazione auto</p>
+            </div>
+            
+            <div class="specializzazioni-grid">
+                <div class="specializzazione-card">
+                    <i class="fas fa-hammer"></i>
+                    <h3>Battitura Lamiere</h3>
+                    <p>Ripristino della forma originale delle lamiere danneggiate con tecniche tradizionali e moderne.</p>
+                </div>
+                
+                <div class="specializzazione-card">
+                    <i class="fas fa-spray-can"></i>
+                    <h3>Verniciatura</h3>
+                    <p>Verniciatura professionale in cabina a forno con prodotti di prima qualità e perfetta resa cromatica.</p>
+                </div>
+                
+                <div class="specializzazione-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Meccanica</h3>
+                    <p>Riparazioni meccaniche complete su tutti i sistemi del veicolo con attrezzature professionali.</p>
+                </div>
+                
+                <div class="specializzazione-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Lavori Assicurativi</h3>
+                    <p>Gestione completa delle pratiche assicurative con tutte le principali compagnie.</p>
+                </div>
+                
+                <div class="specializzazione-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Diagnosi</h3>
+                    <p>Sistemi diagnostici computerizzati per individuare rapidamente ogni tipo di problema.</p>
+                </div>
+                
+                <div class="specializzazione-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Garanzia</h3>
+                    <p>Tutti i nostri lavori sono garantiti e certificati secondo gli standard di qualità più elevati.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Hai bisogno di una riparazione?</h2>
+            <p>Contattaci per un preventivo gratuito e senza impegno. I nostri esperti sono pronti ad aiutarti!</p>
+            <div class="cta-buttons">
+                <a href="tel:+393486928732" class="cta-btn primary">
+                    <i class="fas fa-phone"></i>
+                    Chiamaci ora
+                </a>
+                <a href="mailto:Vincenzotrinchillo12@gmail.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Invia email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contatti" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo e descrizione -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="Logo-trinchillo-2.png" alt="Auto Trinchillo Footer Logo" loading="lazy">
+                    </div>
+                    <p>La tua auto in mani esperte. Qualità, professionalità e affidabilità da oltre 40 anni.</p>
+                </div>
+                
+                <!-- Link rapidi -->
+                <div class="footer-section">
+                    <h3>Link rapidi</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#servizi">Servizi</a></li>
+                        <li><a href="index.html#mappa">Dove siamo</a></li>
+                        <li><a href="index.html#recensioni">Recensioni</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contatti -->
+                <div class="footer-section">
+                    <h3>Contatti</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+39 348 692 8732</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Vincenzotrinchillo12@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Via del Cimitero n.19, Qualiano</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social -->
+                <div class="footer-section">
+                    <h3>Seguici</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/europacarrozzeriatrinchillo/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@europacarrozzeria?_t=ZN-90z3GyaVUDm&_r=1" target="_blank" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Auto Trinchillo. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/custom_script.js"></script>
+</body>
+</html>
