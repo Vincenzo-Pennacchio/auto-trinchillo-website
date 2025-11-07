@@ -2514,3 +2514,564 @@ img[loading="lazy"]:not([src]) {
         color: var(--black);
     }
 }
+
+/* ===== VERNICIATURA PAGE STYLES ===== */
+
+/* Breadcrumb */
+.breadcrumb-section {
+    padding: var(--spacing-md) 0;
+    background: #f8f9fa;
+    margin-top: 80px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 14px;
+    color: var(--text-gray);
+}
+
+.breadcrumb a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+    color: var(--dark-blue);
+}
+
+.breadcrumb i {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+/* Intro Section */
+.intro-section {
+    padding: var(--spacing-xxl) 0;
+    background: var(--white);
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.intro-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: var(--white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.intro-title {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+.intro-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+}
+
+.intro-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    display: block;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-gray);
+    font-weight: 500;
+    margin-top: var(--spacing-xs);
+}
+
+.intro-image .image-wrapper {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.intro-image .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(40, 125, 255, 0.1), transparent);
+}
+
+/* Verniciatura Servizi */
+.verniciatura-servizi {
+    padding: var(--spacing-xxl) 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.section-badge {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.verniciatura-servizi .servizi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.verniciatura-servizi .servizio-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    border: 1px solid #e9ecef;
+}
+
+.verniciatura-servizi .servizio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.servizio-card .card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.servizio-card .card-icon i {
+    color: var(--white);
+    font-size: 24px;
+}
+
+.servizio-card h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: var(--spacing-sm);
+}
+
+.servizio-card p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.features-list i {
+    color: var(--primary-blue);
+    font-size: 12px;
+}
+
+/* Processo Section */
+.processo-section {
+    padding: var(--spacing-xxl) 0;
+    background: var(--white);
+}
+
+.processo-badge {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.processo-timeline {
+    display: grid;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    position: relative;
+}
+
+.processo-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-blue), var(--dark-blue));
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    position: relative;
+}
+
+.timeline-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-content {
+    background: #f8f9fa;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    flex: 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: var(--spacing-sm);
+}
+
+.timeline-content p {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Tecnologie Section */
+.tecnologie-section {
+    padding: var(--spacing-xxl) 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.tecnologie-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.tecnologie-badge {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.tecnologie-text h2 {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: var(--spacing-sm);
+}
+
+.tecnologie-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+}
+
+.tecnologie-features {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.tech-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tech-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tech-icon i {
+    color: var(--white);
+    font-size: 20px;
+}
+
+.tech-content h4 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 4px;
+}
+
+.tech-content p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.tecnologie-image {
+    position: relative;
+}
+
+.tecnologie-image .image-container {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.tecnologie-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tecnologie-image .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(40, 125, 255, 0.1), transparent);
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-element {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-element.element-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-element.element-2 {
+    top: 60%;
+    right: 20%;
+    animation-delay: 2s;
+}
+
+.floating-element.element-3 {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+/* CTA Section */
+.cta-section {
+    padding: var(--spacing-xxl) 0;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: var(--white);
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-text h2 {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.cta-text p {
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.9;
+}
+
+.cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.cta-btn.primary {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+.cta-btn.primary:hover {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.cta-btn.secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.cta-btn.secondary:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+/* Responsive Design for Verniciatura Page */
+@media (max-width: 768px) {
+    .intro-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .intro-stats {
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+    
+    .stat-number {
+        font-size: 28px;
+    }
+    
+    .verniciatura-servizi .servizi-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .processo-timeline::before {
+        display: none;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .timeline-number {
+        margin: 0 auto;
+    }
+    
+    .tecnologie-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .tecnologie-image {
+        order: -1;
+    }
+    
+    .tech-feature {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 200px;
+        justify-content: center;
+    }
+}
